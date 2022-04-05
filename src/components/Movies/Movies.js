@@ -29,7 +29,7 @@ class Movies extends Component {
                     {
                         this.state.datos.length === 0 ? 
                         <h3>Cargando...</h3> : 
-                        this.state.datos.map((oneMovie, idx) => <Card key={oneMovie.id + idx} movieInfo={oneMovie} />)
+                        this.state.datos.map((oneMovie, idx) => <Card key={oneMovie.title + idx} movieInfo={oneMovie} />)
                     }  
                 </div>   
             </React.Fragment>
