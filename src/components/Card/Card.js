@@ -36,7 +36,7 @@ class Card extends Component {
                 <p className={this.state.viewMore === false ?  'hide' : 'show'}>Rating: {this.props.movieInfo.vote_average}</p>
                 <p className={this.state.viewMore === false ?  'hide' : 'show'}>Idioma original: {this.props.movieInfo.original_language}</p>
                 <p className={this.state.viewMore === false ?  'hide' : 'show'}>Fecha de estreno: {this.props.movieInfo.release_date}</p>
-                <p onClick={() => this.verMas()}>{this.state.texto}</p>
+                <p onClick={() => this.verMas()} className='more'>{this.state.texto}</p>
             </div>
         )
     }
