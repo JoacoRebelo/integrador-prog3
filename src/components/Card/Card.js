@@ -30,7 +30,7 @@ class Card extends Component {
         console.log(this.props);
         return(
             <div className='character-card'>
-                <img src={this.props.movieInfo.image} alt={this.props.movieInfo.name} ></img>
+                <img src={`https://image.tmdb.org/t/p/w342/${this.props.movieInfo.poster_path}`} alt={this.props.movieInfo.name} ></img>
                 <h4>{this.props.movieInfo.title}</h4>
                 <p>{this.props.movieInfo.overview}</p>
                 <p className={this.state.viewMore === false ?  'hide' : 'show'}>Rating: {this.props.movieInfo.vote_average}</p>
