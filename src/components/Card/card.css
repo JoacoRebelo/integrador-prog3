@@ -10,6 +10,20 @@
     width: 100%;
     margin-bottom: 20px;
 }
+
+/*FORMATO MODO LISTA*/
+.character-card.modoLista {
+    width:100%;
+    display:flex;
+}
+.character-card.modoLista img{
+    width:15%;
+}
+.character-card.modoLista .cardContainer{
+    width:55%;
+    margin-left:15px;
+}
+
 .character-card:hover,
 .active{
 box-shadow: 0rem 0rem 10px 8px rgb(58 59 69 / 25%);
@@ -40,3 +54,5 @@ box-shadow: 0rem 0rem 10px 8px rgb(58 59 69 / 25%);
     height: 75px;
     overflow: hidden;
 }
+
+

@@ -10,7 +10,6 @@ function App() {
     <div id='wrapper'>
       <Header />
       <div className='container-fluid'>
-        <h3 className='h3'>Últimos estrenos</h3>
         <Movies />
       </div>
       <Footer /> 
