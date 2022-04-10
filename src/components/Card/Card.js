@@ -28,7 +28,10 @@ class Card extends Component {
         this.imgSelector()
     }
 
-/*     imgSelector(){
+/*     INTENTE QUE CAMBIE LA IMAGEN SEGUN EL FORMATO DE VISTA PERO AUN NO PUDE EL LUNES LO CHECKEO CON ALE
+##########################################################################################################
+
+        imgSelector(){
         if (this.props.modoVista==="modoCuadro") {
             this.setState({
                 img: this.props.movieInfo.poster_path
