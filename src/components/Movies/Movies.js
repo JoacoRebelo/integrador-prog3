@@ -11,6 +11,7 @@ class Movies extends Component {
             datosBkp: [],
             nextPage: '',
             modoVista: "modoCuadro",
+            empty:"Cargando..."
         }  
     }
 
@@ -31,6 +32,7 @@ class Movies extends Component {
         this.setState({
             datos:datosFiltrados
         })
+        texto === "" ? this.setState({empty:"Cargando..."}) : this.setState({empty:"No se encuentran películas con ese título"})
     }
 
     modoLista(){
@@ -59,11 +61,11 @@ class Movies extends Component {
                 <h3 className='h3'>Últimos estrenos</h3>
                 <button onClick={()=>this.modoLista()} className="formato"><img src="https://st4.depositphotos.com/14846838/20430/v/600/depositphotos_204302882-stock-illustration-content-or-text-into-a.jpg"/></button>
                 <button onClick={()=>this.modoCuadro()} className="formato"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBFwKSJO2oI0V152AoswB5nPqq7oppqbbEexQuIg83i0VKpsUEe8dmySGvzCrxLhNrKVk&usqp=CAU"/></button>
-                <Form filtrarPersonajes={(textoABuscar)=>this.filtrarPersonajes(textoABuscar)} />
+                <Form filtrarPersonajes={(textoABuscar)=>this.filtrarPersonajes(textoABuscar)}/>
                 <div className='row card-container'>  
                     {
                         this.state.datos.length === 0 ? 
-                        (this.state.datosBkp === this.state.datos ? <h2>Cargando...</h2> : <h2>No hay datos que coincidan con su búsqueda</h2>) : 
+                        <h3>{this.state.empty}</h3> : 
                         this.state.datos.map((oneMovie, idx) => <Card key={oneMovie.title + idx} movieInfo={oneMovie} modoVista={this.state.modoVista} borrar={(id) => this.borrarCard(id)}/>)
                     }  
                 </div>   
