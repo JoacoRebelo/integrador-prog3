@@ -25,7 +25,6 @@ class Form extends Component {
         return(
             <form onSubmit={(event)=>this.pDef(event)} className="mb-4">
                 <input onChange={(event)=>this.fChange(event)} value={this.props.value} />
-                <button type="submit">Enviar</button>
             </form>
         )
     }

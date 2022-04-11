@@ -61,6 +61,7 @@ class Card extends Component {
                     <p className="extra">Idioma original: {this.props.movieInfo.original_language}</p>
                     <p className="extra">Fecha de estreno: {this.props.movieInfo.release_date}</p>
                     <p onClick={() => this.verMas()} className='more'>{this.state.texto}</p>
+                    <p onClick={() => this.props.borrar(this.props.movieInfo.id)} className='more'>Eliminar</p>
                 </div>
 
             </div>

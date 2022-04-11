@@ -44,8 +44,16 @@ class Movies extends Component {
         })   
     }
 
+    borrarCard(id){
+        let datosFiltrados = this.state.datos.filter(dato => dato.id !== id)
+        this.setState({
+            datos: datosFiltrados
+        })
+        console.log(this.state.datos.length);
+    }
+
     render(){
-        console.log(this.state.datos);
+        //console.log(this.state.datos);
         return(
             <React.Fragment> 
                 <h3 className='h3'>Últimos estrenos</h3>
@@ -56,7 +64,7 @@ class Movies extends Component {
                     {
                         this.state.datos.length === 0 ? 
                         (this.state.datosBkp === this.state.datos ? <h2>Cargando...</h2> : <h2>No hay datos que coincidan con su búsqueda</h2>) : 
-                        this.state.datos.map((oneMovie, idx) => <Card key={oneMovie.title + idx} movieInfo={oneMovie} modoVista={this.state.modoVista}/>)
+                        this.state.datos.map((oneMovie, idx) => <Card key={oneMovie.title + idx} movieInfo={oneMovie} modoVista={this.state.modoVista} borrar={(id) => this.borrarCard(id)}/>)
                     }  
                 </div>   
             </React.Fragment>
