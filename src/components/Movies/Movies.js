@@ -10,6 +10,7 @@ class Movies extends Component {
             datos: [],
             datosBkp: [],
             modoVista: "modoCuadro",
+            empty:"Cargando...",
             nextPage: ''
         }  
     }
@@ -32,6 +33,7 @@ class Movies extends Component {
         this.setState({
             datos:datosFiltrados
         })
+        texto === "" ? this.setState({empty:"Cargando..."}) : this.setState({empty:"No se encuentran películas con ese título"})
     }
 
     modoLista(){
@@ -78,7 +80,7 @@ class Movies extends Component {
                 <div className='row card-container'>  
                     {
                         this.state.datos.length === 0 ? 
-                        (this.state.datosBkp === this.state.datos ? <h2>Cargando...</h2> : <h2>No hay datos que coincidan con su búsqueda</h2>) : 
+                        <h3>{this.state.empty}</h3> : 
                         this.state.datos.map((oneMovie, idx) => <Card key={oneMovie.title + idx} movieInfo={oneMovie} modoVista={this.state.modoVista} borrar={(id) => this.borrarCard(id)}/>)
                     }  
                 </div>   

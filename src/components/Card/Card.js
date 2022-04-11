@@ -7,7 +7,7 @@ class Card extends Component {
         this.state = {
             texto: 'Ver más',
             viewMore: false,
-            img: this.props.movieInfo.poster_path
+            img: this.props.movieInfo.backdrop_path
         }  
     }
 
@@ -29,22 +29,16 @@ class Card extends Component {
     }
 
 
-        imageFormat(){
-        if (this.props.modoVista==="modoCuadro") {
+    imageFormat(){
+        if (this.state.viewMore) {
+            this.setState({
+                img: this.props.movieInfo.backdrop_path
+            })
+        }else{
             this.setState({
                 img: this.props.movieInfo.poster_path
             })
-        } else{
-            if (this.state.viewMore) {
-                this.setState({
-                    img: this.props.movieInfo.backdrop_path
-                })
-            }else{
-                this.setState({
-                    img: this.props.movieInfo.poster_path
-                })
-            }
-        }
+        }  
     }
 
     render(){
