@@ -11,7 +11,6 @@ class Movies extends Component {
             datosBkp: [],
             modoVista: "modoCuadro",
             nextPage: ''
-            
         }  
     }
 
@@ -22,6 +21,7 @@ class Movies extends Component {
                 {
                     datos: data.results, 
                     datosBkp: data.results,
+                    nextPage: data.page
                 }
             ))
             .catch(error => console.log('El error es este: ' + error))
@@ -54,20 +54,20 @@ class Movies extends Component {
     }
 
     cargarMas(){
-        fetch(this.state.nextPage)
+        fetch('https://api.themoviedb.org/3/movie/popular?api_key=a52f1f77a09feddf44639ff31672804a&language=en-US&page=' + this.state.nextPage + 1)
             .then(response => response.json())
             .then(data => this.setState(
                 {
                     datos: this.state.datos.concat(data.results),
                     datosBkp: this.state.datosBkp.concat(data.results),
-                    nextPage: 'https://api.themoviedb.org/3/movie/popular?api_key=a52f1f77a09feddf44639ff31672804a&language=en-US&page=2'
+                    nextPage: data.page
                 }
             ))
             .catch(error => console.log('El error es este: ' + error))
     }
 
     render(){
-        console.log(this.state.datos);
+        //console.log(this.state.nextPage);
         return(
             <React.Fragment> 
                 <h3 className='h3'>Últimos estrenos</h3>
