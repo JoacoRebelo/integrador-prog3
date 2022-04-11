@@ -31,14 +31,6 @@ class Movies extends Component {
             .catch(error => console.log('El error es este: ' + error))
     }
 
-    filtrarPersonajes(texto){
-        let datosFiltrados = this.state.datos.filter(dato=>dato.title.toUpperCase().includes(texto))
-        this.setState({
-            datosVir:datosFiltrados
-        })
-        texto === "" ? this.setState({empty:"Cargando..."}) : this.setState({empty:"No se encuentran películas con ese título"})
-    }
-
     modoLista(){
         this.setState({
             modoVista:"modoLista"
@@ -50,10 +42,19 @@ class Movies extends Component {
         })   
     }
 
+    filtrarPersonajes(texto){
+        let datosBorrados = this.state.datosBkp.filter(datos => !this.state.datosDel.includes(datos.id))
+        let datosFiltrados = datosBorrados.filter(dato=>dato.title.toUpperCase().includes(texto))
+        this.setState({
+            datosVir:datosFiltrados
+        })
+        texto === "" ? this.setState({empty:"Cargando..."}) : this.setState({empty:"No se encuentran películas con ese título"})
+    }
+
     borrarCard(id){
         let datosBorrados = this.state.datosDel
         this.state.datos.map(datos=>datos.id === id ? datosBorrados.push(datos.id) : "")
-        let datosFiltrados = this.state.datos.filter(datos => !this.state.datosDel.includes(datos.id))
+        let datosFiltrados = this.state.datosVir.filter(datos => !this.state.datosDel.includes(datos.id))
         this.setState({
             datosDel: datosBorrados,
             datos: datosFiltrados,
@@ -69,6 +70,7 @@ class Movies extends Component {
                 {
                     datos: this.state.datos.concat(data.results),
                     datosBkp: this.state.datosBkp.concat(data.results),
+                    datosVir: this.state.datosVir.concat(data.results),
                     nextPage: data.page
                 }
             ))
