@@ -9,8 +9,9 @@ class Movies extends Component {
         this.state = {
             datos: [],
             datosBkp: [],
-            nextPage: '',
             modoVista: "modoCuadro",
+            nextPage: ''
+            
         }  
     }
 
@@ -20,7 +21,7 @@ class Movies extends Component {
             .then(data => this.setState(
                 {
                     datos: data.results, 
-                    datosBkp: data.results
+                    datosBkp: data.results,
                 }
             ))
             .catch(error => console.log('El error es este: ' + error))
@@ -52,14 +53,28 @@ class Movies extends Component {
         console.log(this.state.datos.length);
     }
 
+    cargarMas(){
+        fetch(this.state.nextPage)
+            .then(response => response.json())
+            .then(data => this.setState(
+                {
+                    datos: this.state.datos.concat(data.results),
+                    datosBkp: this.state.datosBkp.concat(data.results),
+                    nextPage: 'https://api.themoviedb.org/3/movie/popular?api_key=a52f1f77a09feddf44639ff31672804a&language=en-US&page=2'
+                }
+            ))
+            .catch(error => console.log('El error es este: ' + error))
+    }
+
     render(){
-        //console.log(this.state.datos);
+        console.log(this.state.datos);
         return(
             <React.Fragment> 
                 <h3 className='h3'>Últimos estrenos</h3>
                 <button onClick={()=>this.modoLista()} className="formato"><img src="https://st4.depositphotos.com/14846838/20430/v/600/depositphotos_204302882-stock-illustration-content-or-text-into-a.jpg"/></button>
                 <button onClick={()=>this.modoCuadro()} className="formato"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBFwKSJO2oI0V152AoswB5nPqq7oppqbbEexQuIg83i0VKpsUEe8dmySGvzCrxLhNrKVk&usqp=CAU"/></button>
                 <Form filtrarPersonajes={(textoABuscar)=>this.filtrarPersonajes(textoABuscar)} />
+                <button onClick={() => this.cargarMas()} >Cargar más</button>
                 <div className='row card-container'>  
                     {
                         this.state.datos.length === 0 ? 
