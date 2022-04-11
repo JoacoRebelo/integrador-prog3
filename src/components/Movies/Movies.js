@@ -9,6 +9,8 @@ class Movies extends Component {
         this.state = {
             datos: [],
             datosBkp: [],
+            datosVir: [],
+            datosDel: [],
             modoVista: "modoCuadro",
             empty:"Cargando...",
             nextPage: ''
@@ -23,15 +25,16 @@ class Movies extends Component {
                 {
                     datos: data.results, 
                     datosBkp: data.results,
+                    datosVir: data.results
                 }
             ))
             .catch(error => console.log('El error es este: ' + error))
     }
 
     filtrarPersonajes(texto){
-        let datosFiltrados = this.state.datosBkp.filter(dato=>dato.title.toUpperCase().includes(texto))
+        let datosFiltrados = this.state.datos.filter(dato=>dato.title.toUpperCase().includes(texto))
         this.setState({
-            datos:datosFiltrados
+            datosVir:datosFiltrados
         })
         texto === "" ? this.setState({empty:"Cargando..."}) : this.setState({empty:"No se encuentran películas con ese título"})
     }
@@ -48,9 +51,13 @@ class Movies extends Component {
     }
 
     borrarCard(id){
-        let datosFiltrados = this.state.datos.filter(dato => dato.id !== id)
+        let datosBorrados = this.state.datosDel
+        this.state.datos.map(datos=>datos.id === id ? datosBorrados.push(datos.id) : "")
+        let datosFiltrados = this.state.datos.filter(datos => !this.state.datosDel.includes(datos.id))
         this.setState({
-            datos: datosFiltrados
+            datosDel: datosBorrados,
+            datos: datosFiltrados,
+            datosVir: datosFiltrados
         })
         console.log(this.state.datos.length);
     }
@@ -69,7 +76,7 @@ class Movies extends Component {
     }
 
     render(){
-        console.log(this.state.datos);
+        console.log(this.state.datosDel);
         return(
             <React.Fragment> 
                 <h3 className='h3'>Últimos estrenos</h3>
@@ -79,9 +86,9 @@ class Movies extends Component {
                 <button onClick={() => this.cargarMas()} >Cargar más</button>
                 <div className='row card-container'>  
                     {
-                        this.state.datos.length === 0 ? 
+                        this.state.datosVir.length === 0 ? 
                         <h3>{this.state.empty}</h3> : 
-                        this.state.datos.map((oneMovie, idx) => <Card key={oneMovie.title + idx} movieInfo={oneMovie} modoVista={this.state.modoVista} borrar={(id) => this.borrarCard(id)}/>)
+                        this.state.datosVir.map((oneMovie, idx) => <Card key={oneMovie.title + idx} movieInfo={oneMovie} modoVista={this.state.modoVista} borrar={(id) => this.borrarCard(id)}/>)
                     }  
                 </div>   
             </React.Fragment>
