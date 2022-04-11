@@ -7,7 +7,7 @@ class Card extends Component {
         this.state = {
             texto: 'Ver más',
             viewMore: false,
-            img: /* this.props.modoVista === "modoCuadro" ?  */this.props.movieInfo.poster_path/*  :this.props.movieInfo.backdrop_path */
+            img: this.props.movieInfo.poster_path
         }  
     }
 
@@ -25,13 +25,11 @@ class Card extends Component {
                 texto: 'Ver más'
             })
         }
-        this.imgSelector()
+        this.imageFormat()
     }
 
-/*     INTENTE QUE CAMBIE LA IMAGEN SEGUN EL FORMATO DE VISTA PERO AUN NO PUDE EL LUNES LO CHECKEO CON ALE
-##########################################################################################################
 
-        imgSelector(){
+        imageFormat(){
         if (this.props.modoVista==="modoCuadro") {
             this.setState({
                 img: this.props.movieInfo.poster_path
@@ -47,10 +45,11 @@ class Card extends Component {
                 })
             }
         }
-    } */
+    }
 
     render(){
-        console.log(this.state.img);
+        /* console.log(this.state.img); */
+        console.log(this.props);
         return(
             <div className={(this.state.viewMore === false ?  'character-card hide' : 'character-card show') + " " + this.props.modoVista}>
                 <img src={"https://image.tmdb.org/t/p/w342/" + this.state.img} alt={this.props.movieInfo.name} ></img>
