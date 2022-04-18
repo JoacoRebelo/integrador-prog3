@@ -85,7 +85,7 @@ class Movies extends Component {
                 <button onClick={()=>this.modoLista()} className="formato"><img src="https://st4.depositphotos.com/14846838/20430/v/600/depositphotos_204302882-stock-illustration-content-or-text-into-a.jpg"/></button>
                 <button onClick={()=>this.modoCuadro()} className="formato"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBFwKSJO2oI0V152AoswB5nPqq7oppqbbEexQuIg83i0VKpsUEe8dmySGvzCrxLhNrKVk&usqp=CAU"/></button>
                 <Form filtrarPersonajes={(textoABuscar)=>this.filtrarPersonajes(textoABuscar)} />
-                <button onClick={() => this.cargarMas()} >Cargar más</button>
+                <button onClick={() => this.cargarMas()} className='car-mas'>Cargar más</button>
                 <div className='row card-container'>  
                     {
                         this.state.datosVir.length === 0 ? 

@@ -4,11 +4,8 @@ import './footer.css';
 function Footer(){
     return(
         <footer class="footer">
-			<ul>
-                
-                <li className='foot'>Gigena Nicolás</li>
-                <li className='foot'>Gomes Rebelo Joaquín</li>
-            </ul>
+            <img src='./foot-icon.jpeg'></img>
+            <p className='autores'>Gigena Nicolás - Gomes Rebelo Joaquín - Programación III 2022</p>
 			
 		</footer>
     );
