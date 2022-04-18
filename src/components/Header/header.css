@@ -1,7 +1,11 @@
 .head{
-    background-color: #022441;
-    color: white;
+    background-color: #062F49;
     font-family: 'Source Sans Pro', Arial, sans-serif;
-    position: inherit;
-    padding: 1.5%;
+    background-size: 100% 97%;
+    height: 77px;
+}
+
+.icon{
+    margin-left: 60px;
+    margin-top: 3px;
 }

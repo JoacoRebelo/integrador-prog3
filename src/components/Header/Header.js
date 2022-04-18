@@ -4,7 +4,7 @@ import './header.css';
 function Header(){
     return(
         <header className='head'>
-            <img src='/tmdb-logo.png'></img>
+            <img src='/head-icon.png' className='icon'></img>
         </header>
     );
 }

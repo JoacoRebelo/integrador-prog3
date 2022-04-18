@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './form.css';
 
 class Form extends Component {
     constructor(props){
@@ -24,7 +25,7 @@ class Form extends Component {
     render(){
         return(
             <form onSubmit={(event)=>this.pDef(event)} className="mb-4">
-                <input onChange={(event)=>this.fChange(event)} value={this.props.value} />
+                <input onChange={(event)=>this.fChange(event)} value={this.props.value} placeholder='Escribí un título...' className='mb-4-2'/>
             </form>
         )
     }

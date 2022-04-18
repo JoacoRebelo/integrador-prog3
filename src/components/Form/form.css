@@ -1,0 +1,16 @@
+.mb-4{
+    margin-left: 82.5%;
+    margin-top: -57px;
+    
+}
+
+.mb-4-2{
+    color: inherit;
+    text-overflow: ellipsis;
+    border: 0;
+    outline: 0;
+    appearance: none;
+    cursor: pointer;
+    border-radius: 10px;
+    
+}
